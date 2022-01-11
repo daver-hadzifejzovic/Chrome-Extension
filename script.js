@@ -131,19 +131,24 @@ function deleteItem(){
     }
         
     for(var i = 0; i < items.length; i++){
-        items[i].onclick = function(){
+        items[i].addEventListener("dblclick", function(){
+            if(confirm("Do you wish to delete your input? (HINT: It will be deleted)")){
             index = tab.indexOf(this.textContent);
             console.log(this.textContent + " Index = " + index);
             myLeads.splice(index, 1);
             localStorage.setItem("okej", JSON.stringify(myLeads));
             myLeads = leadsFromLocalStorage;
             render();
-        };
+            } else {
+
+            }
+        });
     }       
 }
 
- // Minor Bug fix
+    // Minor Bug fix
     // USPESNO DODAT KEYLISTNER NA ENTER
     // USPESNO DODATO CTRL LINKOVE
     // USPESNO DODATO IME ZA LINK
     // USPESNO DODAT DELETE BTN ZA POSEBNE ITEME
+    // Miner Bugs fixed
